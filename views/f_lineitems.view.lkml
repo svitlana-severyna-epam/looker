@@ -146,4 +146,11 @@ view: f_lineitems {
     sql: ${total_sum} ;;
     value_format_name: usd
   }
+
+  measure: total_sale_by_air {
+    type: sum
+    filters: [l_shipmode: "air"]
+    sql: ${l_totalprice} ;;
+    value_format_name: usd
+  }
 }
