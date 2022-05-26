@@ -41,10 +41,35 @@ explore: f_lineitems {
     relationship: many_to_one
   }
 
-  join: d_dates {
-    view_label: "Dates"
+  join: ship_date {
+    from: d_dates
+    view_label: "Ship date"
     type: left_outer
-    sql_on: ${f_lineitems.l_shipdatekey} = ${d_dates.datekey} ;;
+    sql_on: ${f_lineitems.l_shipdatekey} = ${ship_date.datekey} ;;
+    relationship: many_to_one
+  }
+
+  join: commit_date {
+    from: d_dates
+    view_label: "Commit date"
+    type: left_outer
+    sql_on: ${f_lineitems.l_commitdatekey} = ${commit_date.datekey} ;;
+    relationship: many_to_one
+  }
+
+  join: order_date {
+    from: d_dates
+    view_label: "Order date"
+    type: left_outer
+    sql_on: ${f_lineitems.l_orderdatekey} = ${order_date.datekey} ;;
+    relationship: many_to_one
+  }
+
+  join: receipt_date {
+    from: d_dates
+    view_label: "Receipt date"
+    type: left_outer
+    sql_on: ${f_lineitems.l_receiptdatekey} = ${receipt_date.datekey} ;;
     relationship: many_to_one
   }
 }
