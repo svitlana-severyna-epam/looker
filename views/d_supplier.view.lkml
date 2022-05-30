@@ -38,6 +38,15 @@ view: d_supplier {
     sql: ${TABLE}."S_SUPPKEY" ;;
   }
 
+  dimension: tier {
+    label: "Account balance cohort"
+    view_label: "Account balance cohort"
+    sql: ${s_acctbal} ;;
+    style: integer
+    tiers: [0, 1, 3001, 5001, 7000]
+    type: tier
+  }
+
   measure: count {
     type: count
     drill_fields: [s_name]

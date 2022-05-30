@@ -128,29 +128,98 @@ view: f_lineitems {
     drill_fields: []
   }
 
-  measure: averege_sum {
+  measure: avg_sale_price {
+    description: "Average sale price of items sold"
     type: average
-    sql: ${l_totalprice} ;;
+    sql: ${l_extendedprice} ;;
     value_format_name: usd
+    view_label: "Money measures"
   }
 
 
-  measure: total_sum {
+  measure: total_sales {
+    description: "Total sales from items sold"
+    group_label: "Sum"
     type: sum
-    sql: ${l_totalprice} ;;
+    sql: ${l_extendedprice} ;;
     value_format_name: usd
+    view_label: "Money measures"
   }
 
-  measure: running_sum{
+  measure: cumulative_total_sales {
+    description: "Cumulative total sales from items sold"
     type: running_total
-    sql: ${total_sum} ;;
+    sql: ${l_extendedprice} ;;
     value_format_name: usd
+    view_label: "Money measures"
   }
 
   measure: total_sale_by_air {
+    description: "Total sales of items shipped by air"
+    group_label: "Sum"
     type: sum
-    filters: [l_shipmode: "air"]
-    sql: ${l_totalprice} ;;
+    filters: [l_shipmode: "REG AIR, AIR"]
+    sql: ${l_extendedprice} ;;
     value_format_name: usd
+    view_label: "Money measures"
+  }
+
+  measure: total_gross_revenue {
+    description: "Total price of completed sales"
+    group_label: "Sum"
+    type: sum
+    filters: [l_orderstatus: "F"]
+    sql: ${l_extendedprice} ;;
+    value_format_name: usd
+    view_label: "Money measures"
+  }
+
+  measure: total_cost {
+    description: "Total Supply Cost"
+    group_label: "Sum"
+    type: sum
+    sql:  ${l_supplycost};;
+    value_format_name: usd
+    view_label: "Money measures"
+  }
+
+  measure: total_gross_margin_amount {
+    group_label: "Sum"
+    description: "Total Gross Revenue – Total Cost"
+    sql: ${total_gross_revenue} - ${total_cost} ;;
+    type: number
+    value_format_name: usd
+    view_label: "Money measures"
+  }
+
+  measure: gross_margin_percentage {
+    description: "Total Gross Margin Amount / Total Gross Revenue"
+    group_label: "Sum"
+    sql: ${total_gross_margin_amount}/NULLIF(${total_gross_revenue}, 0) ;;
+    type: number
+    value_format_name: percent_0
+    view_label: "Money measures"
+  }
+
+  measure: number_of_items_returned {
+    description: "Number of items that were returned by dissatisfied customers"
+    type: count
+    filters: [l_returnflag: "R" ]
+  }
+
+  measure: number_of_items_sold {
+    description: "Number of items that were sold"
+    type: count
+  }
+
+  measure: item_return_rate {
+    description: "Number Of Items Returned / Total Number Of Items Sold"
+    sql: ${number_of_items_returned}/NULLIF(${number_of_items_sold}, 0) ;;
+    type: number
+  }
+
+  measure: avg_spend_per_customer {
+    description: "Total Sale Price / Total Number of Customers"
+    sql: ${total_sales} / NULLIF(${d_customer.count}, 0) ;;
   }
 }
