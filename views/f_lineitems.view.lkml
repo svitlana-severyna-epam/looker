@@ -3,31 +3,37 @@ view: f_lineitems {
     ;;
 
   dimension: l_availqty {
+    label: "Available quantity"
     type: number
     sql: ${TABLE}."L_AVAILQTY" ;;
   }
 
   dimension: l_clerk {
+    label: "Clerk"
     type: string
     sql: ${TABLE}."L_CLERK" ;;
   }
 
   dimension: l_commitdatekey {
+    label: "Commit date key"
     type: number
     sql: ${TABLE}."L_COMMITDATEKEY" ;;
   }
 
   dimension: l_custkey {
+    label: "Customer key"
     type: number
     sql: ${TABLE}."L_CUSTKEY" ;;
   }
 
   dimension: l_discount {
+    label: "Discount"
     type: number
     sql: ${TABLE}."L_DISCOUNT" ;;
   }
 
   dimension: l_extendedprice {
+    label: "Extended price"
     type: number
     sql: ${TABLE}."L_EXTENDEDPRICE" ;;
   }
@@ -39,86 +45,103 @@ view: f_lineitems {
   }
 
   dimension: l_orderdatekey {
+    label: "Order date key"
     type: number
     sql: ${TABLE}."L_ORDERDATEKEY" ;;
   }
 
   dimension: l_orderkey {
+    label: "Order key"
     type: number
     sql: ${TABLE}."L_ORDERKEY" ;;
   }
 
   dimension: l_orderpriority {
+    label: "Order priority"
     type: string
     sql: ${TABLE}."L_ORDERPRIORITY" ;;
   }
 
   dimension: l_orderstatus {
+    label: "Order status"
     type: string
     sql: ${TABLE}."L_ORDERSTATUS" ;;
   }
 
   dimension: l_partkey {
+    label: "Part key"
     type: number
     sql: ${TABLE}."L_PARTKEY" ;;
   }
 
   dimension: l_quantity {
+    label: "Quantity"
     type: number
     sql: ${TABLE}."L_QUANTITY" ;;
   }
 
   dimension: l_receiptdatekey {
+    label: "Receipt date key"
     type: number
     sql: ${TABLE}."L_RECEIPTDATEKEY" ;;
   }
 
   dimension: l_returnflag {
+    label: "Return flag"
     type: string
     sql: ${TABLE}."L_RETURNFLAG" ;;
   }
 
   dimension: l_shipdatekey {
+    label: "Ship date key"
     type: number
     sql: ${TABLE}."L_SHIPDATEKEY" ;;
   }
 
   dimension: l_shipinstruct {
+    label: "Ship instruct"
     type: string
     sql: ${TABLE}."L_SHIPINSTRUCT" ;;
   }
 
   dimension: l_shipmode {
+    label: "Ship mode"
     type: string
     sql: ${TABLE}."L_SHIPMODE" ;;
   }
 
   dimension: l_shippriority {
+    label: "Ship priority"
     type: number
     sql: ${TABLE}."L_SHIPPRIORITY" ;;
   }
 
   dimension: l_suppkey {
+    label: "Supplier key"
     type: number
     sql: ${TABLE}."L_SUPPKEY" ;;
   }
 
   dimension: l_supplycost {
+    label: "Supply cost"
     type: number
     sql: ${TABLE}."L_SUPPLYCOST" ;;
   }
 
   dimension: l_tax {
+    label: "Tax"
     type: number
     sql: ${TABLE}."L_TAX" ;;
   }
 
   dimension: l_totalprice {
+    label: "Total price"
     type: number
     sql: ${TABLE}."L_TOTALPRICE" ;;
   }
 
   dimension: primary_key {
+    hidden: yes
     primary_key: yes
     sql: CONCAT(${TABLE}.l_orderkey, ${TABLE}.l_partkey, ${TABLE}.l_suppkey, ${TABLE}.l_linenumber) ;;
   }
@@ -216,20 +239,20 @@ view: f_lineitems {
     description: "Number of items that were returned by dissatisfied customers"
     type: count
     filters: [l_returnflag: "R" ]
-    view_label: "Number measure"
+    view_label: "Number measures"
   }
 
   measure: number_of_items_sold {
     description: "Number of items that were sold"
     type: count
-    view_label: "Number measure"
+    view_label: "Number measures"
   }
 
   measure: item_return_rate {
     description: "Number Of Items Returned / Total Number Of Items Sold"
     sql: ${number_of_items_returned}/NULLIF(${number_of_items_sold}, 0) ;;
     type: number
-    view_label: "Number measure"
+    view_label: "Number measures"
   }
 
   measure: avg_spend_per_customer {
