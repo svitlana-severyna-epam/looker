@@ -32,6 +32,7 @@ explore: d_part {}
 explore: d_supplier {}
 
 explore: f_lineitems {
+  label: "Line Items"
   view_label: "Line Items"
   join:  d_customer {
     view_label: "Customer"
@@ -55,14 +56,12 @@ explore: f_lineitems {
   }
 
   join: ship_date {
-    view_label: "Ship date"
     type: left_outer
     sql_on: ${f_lineitems.l_shipdatekey} = ${ship_date.datekey} ;;
     relationship: many_to_one
   }
 
   join: commit_date {
-    view_label: "Commit date"
     type: left_outer
     sql_on: ${f_lineitems.l_commitdatekey} = ${commit_date.datekey} ;;
     relationship: many_to_one
