@@ -10,26 +10,34 @@ datagroup: looker_intensive_8_svitlana_severyna_module_2_default_datagroup {
 
 persist_with: looker_intensive_8_svitlana_severyna_module_2_default_datagroup
 
-explore: d_customer {}
+explore: d_customer {
+  label: "Customer"
+}
 
 explore: commit_date {
-  group_label: "Dates"
+  label: "Commit date"
 }
 
 explore: order_date {
-  group_label: "Dates"
+  label: "Order date"
 }
 
 explore: receipt_date {
-  group_label: "Dates"
+  label: "Receipt date"
 }
 
 explore: ship_date {
-  group_label: "Dates"
+  label: "Ship date"
 }
-explore: d_part {}
 
-explore: d_supplier {}
+explore: d_part {
+  description: "Information about product (brand, size, etc.)"
+  label: "Part"
+}
+
+explore: d_supplier {
+  label: "Supplier"
+}
 
 explore: f_lineitems {
   label: "Line Items"
