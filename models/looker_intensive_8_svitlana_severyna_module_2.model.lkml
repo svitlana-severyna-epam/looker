@@ -32,7 +32,7 @@ explore: d_part {}
 explore: d_supplier {}
 
 explore: f_lineitems {
-  view_label: "LineItems"
+  view_label: "Line Items"
   join:  d_customer {
     view_label: "Customer"
     type: left_outer
