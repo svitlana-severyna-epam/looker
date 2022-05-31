@@ -12,11 +12,21 @@ persist_with: looker_intensive_8_svitlana_severyna_module_2_default_datagroup
 
 explore: d_customer {}
 
-explore: d_dates {}
-
 explore: commit_date {
+  group_label: "Dates"
 }
 
+explore: order_date {
+  group_label: "Dates"
+}
+
+explore: receipt_date {
+  group_label: "Dates"
+}
+
+explore: ship_date {
+  group_label: "Dates"
+}
 explore: d_part {}
 
 explore: d_supplier {}
@@ -45,7 +55,6 @@ explore: f_lineitems {
   }
 
   join: ship_date {
-    from: d_dates
     view_label: "Ship date"
     type: left_outer
     sql_on: ${f_lineitems.l_shipdatekey} = ${ship_date.datekey} ;;
@@ -60,7 +69,6 @@ explore: f_lineitems {
   }
 
   join: order_date {
-    from: d_dates
     view_label: "Order date"
     type: left_outer
     sql_on: ${f_lineitems.l_orderdatekey} = ${order_date.datekey} ;;
@@ -68,7 +76,6 @@ explore: f_lineitems {
   }
 
   join: receipt_date {
-    from: d_dates
     view_label: "Receipt date"
     type: left_outer
     sql_on: ${f_lineitems.l_receiptdatekey} = ${receipt_date.datekey} ;;
