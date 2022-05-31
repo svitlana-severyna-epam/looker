@@ -155,7 +155,7 @@ view: f_lineitems {
     description: "Average sale price of items sold"
     label: "Average sale price"
     type: average
-    sql: ${l_extendedprice} ;;
+    sql: ${l_extendedprice}*(1-${l_discount}) ;;
     value_format_name: usd
     view_label: "Money measures"
   }
@@ -165,7 +165,7 @@ view: f_lineitems {
     description: "Total sales from items sold"
     group_label: "Sum"
     type: sum
-    sql: ${l_extendedprice} ;;
+    sql: ${l_extendedprice}*(1-${l_discount}) ;;
     value_format_name: usd
     view_label: "Money measures"
   }
@@ -173,7 +173,7 @@ view: f_lineitems {
   measure: cumulative_total_sales {
     description: "Cumulative total sales from items sold"
     type: running_total
-    sql: ${l_extendedprice} ;;
+    sql: ${total_sales} ;;
     value_format_name: usd
     view_label: "Money measures"
   }
@@ -183,7 +183,7 @@ view: f_lineitems {
     group_label: "Sum"
     type: sum
     filters: [l_shipmode: "REG AIR, AIR"]
-    sql: ${l_extendedprice} ;;
+    sql: ${l_extendedprice}*(1-${l_discount}) ;;
     value_format_name: usd
     view_label: "Money measures"
   }
@@ -193,7 +193,7 @@ view: f_lineitems {
     group_label: "Sum"
     type: sum
     filters: [d_customer.c_nation: "BRAZIL"]
-    sql: ${l_extendedprice} ;;
+    sql: ${l_extendedprice}*(1-${l_discount}) ;;
     value_format_name: usd
     view_label: "Money measures"
   }
@@ -203,7 +203,7 @@ view: f_lineitems {
     group_label: "Sum"
     type: sum
     filters: [l_orderstatus: "F"]
-    sql: ${l_extendedprice} ;;
+    sql: ${l_extendedprice}*(1-${l_discount}) ;;
     value_format_name: usd
     view_label: "Money measures"
   }
