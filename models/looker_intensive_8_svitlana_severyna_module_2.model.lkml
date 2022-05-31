@@ -14,6 +14,9 @@ explore: d_customer {}
 
 explore: d_dates {}
 
+explore: commit_date {
+}
+
 explore: d_part {}
 
 explore: d_supplier {}
@@ -50,7 +53,6 @@ explore: f_lineitems {
   }
 
   join: commit_date {
-    from: d_dates
     view_label: "Commit date"
     type: left_outer
     sql_on: ${f_lineitems.l_commitdatekey} = ${commit_date.datekey} ;;

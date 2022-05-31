@@ -130,6 +130,7 @@ view: f_lineitems {
 
   measure: avg_sale_price {
     description: "Average sale price of items sold"
+    label: "Average sale price"
     type: average
     sql: ${l_extendedprice} ;;
     value_format_name: usd
@@ -159,6 +160,16 @@ view: f_lineitems {
     group_label: "Sum"
     type: sum
     filters: [l_shipmode: "REG AIR, AIR"]
+    sql: ${l_extendedprice} ;;
+    value_format_name: usd
+    view_label: "Money measures"
+  }
+
+  measure: total_brazil_sales {
+    description: "Total sales by customers from Brazil"
+    group_label: "Sum"
+    type: sum
+    filters: [d_customer.c_nation: "BRAZIL"]
     sql: ${l_extendedprice} ;;
     value_format_name: usd
     view_label: "Money measures"
@@ -205,21 +216,25 @@ view: f_lineitems {
     description: "Number of items that were returned by dissatisfied customers"
     type: count
     filters: [l_returnflag: "R" ]
+    view_label: "Number measure"
   }
 
   measure: number_of_items_sold {
     description: "Number of items that were sold"
     type: count
+    view_label: "Number measure"
   }
 
   measure: item_return_rate {
     description: "Number Of Items Returned / Total Number Of Items Sold"
     sql: ${number_of_items_returned}/NULLIF(${number_of_items_sold}, 0) ;;
     type: number
+    view_label: "Number measure"
   }
 
   measure: avg_spend_per_customer {
     description: "Total Sale Price / Total Number of Customers"
     sql: ${total_sales} / NULLIF(${d_customer.count}, 0) ;;
+    view_label: "Money measures"
   }
 }
