@@ -1,9 +1,9 @@
 test: balance_test {
   explore_source: d_supplier {
-    column: S_ACCTBAL {}
+    column: s_acctbal {}
     column: account_balance_cohort {}
 
-    filters: [d_supplier.S_ACCTBAL: "123" ]
+    filters: [d_supplier.s_acctbal: ">=50 AND <=100" ]
   }
 
   assert: is_cohort_right {
