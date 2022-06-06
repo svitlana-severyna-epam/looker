@@ -260,4 +260,11 @@ view: f_lineitems {
     sql: ${total_sales} / NULLIF(${d_customer.count}, 0) ;;
     view_label: "Money measures"
   }
+
+  measure: number_of_order {
+    type: count_distinct
+    sql: ${l_orderkey} ;;
+    description: "Number of order"
+    view_label: "Number measures"
+  }
 }
