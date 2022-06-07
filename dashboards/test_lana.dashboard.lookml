@@ -1,10 +1,13 @@
 - dashboard: test_lana
-  title: test_lana
+  title: Test Lana
   layout: newspaper
   preferred_viewer: dashboards-next
-  description: ''
+  tile_size: 100
+
+  filters:
+
   elements:
-  - name: firs
+    - name: add_a_unique_name_1654631525
   title: Untitled Visualization
   model: looker_intensive_8_svitlana_severyna_module_2
   explore: f_lineitems
