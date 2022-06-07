@@ -1,10 +1,10 @@
-- dashboard: user_defined
-  title: user_defined
+- dashboard: test_lana
+  title: test_lana
   layout: newspaper
   preferred_viewer: dashboards-next
   description: ''
   elements:
-  - name: add_a_unique_name_1654631525
+  - name: firs
   title: Untitled Visualization
   model: looker_intensive_8_svitlana_severyna_module_2
   explore: f_lineitems
