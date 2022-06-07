@@ -5,6 +5,8 @@ include: "/views/**/*.view"
 
 include: "/tests/*.lkml"
 
+include: "/dashboards/*.dashboard"
+
 datagroup: looker_intensive_8_svitlana_severyna_module_2_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
   max_cache_age: "1 hour"
