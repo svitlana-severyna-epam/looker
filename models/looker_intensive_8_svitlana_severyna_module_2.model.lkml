@@ -14,19 +14,6 @@ datagroup: looker_intensive_8_svitlana_severyna_module_2_default_datagroup {
 
 persist_with: looker_intensive_8_svitlana_severyna_module_2_default_datagroup
 
-explore: d_part {
-  description: "Information about product (brand, size, etc.)"
-  label: "Part"
-}
-
-explore: d_customer {
-  label: "Customer"
-}
-
-explore: d_supplier {
-  label: "Supplier"
-}
-
 explore: f_lineitems {
   label: "Line Items"
   view_label: "Line Items"
