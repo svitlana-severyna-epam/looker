@@ -207,6 +207,7 @@ view: f_lineitems {
     sql: ${l_extendedprice}*(1-${l_discount}) ;;
     value_format_name: usd
     view_label: "Money measures"
+    drill_fields: [order_detail*]
   }
 
   measure: total_cost {
@@ -225,6 +226,7 @@ view: f_lineitems {
     type: number
     value_format_name: usd
     view_label: "Money measures"
+    drill_fields: [supplier_detail*]
   }
 
   measure: gross_margin_percentage {
@@ -249,6 +251,14 @@ view: f_lineitems {
     view_label: "Number measures"
   }
 
+  measure: number_of_complited_order {
+    description: "Number of complited order"
+    type: count_distinct
+    view_label: "Number measures"
+    sql: ${l_orderkey} ;;
+    filters: [l_orderstatus: "F"]
+  }
+
   measure: item_return_rate {
     description: "Number Of Items Returned / Total Number Of Items Sold"
     sql: ${number_of_items_returned}/NULLIF(${number_of_items_sold}, 0) ;;
@@ -270,6 +280,10 @@ view: f_lineitems {
   }
 
   set: supplier_detail {
-    fields: [d_supplier.name, d_supplier.nation, d_supplier.region, d_supplier.account_balance_cohort]
+    fields: [d_supplier.s_name, d_supplier.s_nation, d_supplier.s_region, d_supplier.account_balance_cohort]
+  }
+
+  set: order_detail {
+    fields: [l_orderkey, l_linenumber, l_discount, l_extendedprice, l_quantity, l_supplycost, d_part.p_brand, d_part.p_size, d_customer.c_name, d_customer.nation]
   }
 }
