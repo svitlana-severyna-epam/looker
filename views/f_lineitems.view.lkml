@@ -186,6 +186,7 @@ view: f_lineitems {
     sql: ${l_extendedprice}*(1-${l_discount}) ;;
     value_format_name: usd
     view_label: "Money measures"
+    drill_fields: [supplier_detail*]
   }
 
   measure: total_brazil_sales {
@@ -266,5 +267,9 @@ view: f_lineitems {
     sql: ${l_orderkey} ;;
     description: "Number of order"
     view_label: "Number measures"
+  }
+
+  set: supplier_detail {
+    fields: [d_supplier.name, d_supplier.nation, d_supplier.region, d_supplier.account_balance_cohort]
   }
 }
