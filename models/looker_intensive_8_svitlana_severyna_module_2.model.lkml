@@ -14,6 +14,8 @@ datagroup: looker_intensive_8_svitlana_severyna_module_2_default_datagroup {
 
 persist_with: looker_intensive_8_svitlana_severyna_module_2_default_datagroup
 
+explore: d_supplier {}
+
 explore: f_lineitems {
   label: "Line Items"
   view_label: "Line Items"
